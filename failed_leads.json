@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Rahul",
+        "email": "rahul@gmail.com",
+        "interest": "AI automation",
+        "budget": 65000,
+        "requirement": "Need customer lead automation",
+        "urgency": "high",
+        "status": "pending_retry",
+        "reason": "CRM update failed"
+    },
+    {
+        "name": "Rahul",
+        "email": "rahul@gmail.com",
+        "interest": "AI automation",
+        "budget": 65000,
+        "requirement": "Need customer lead automation",
+        "urgency": "high",
+        "status": "pending_retry",
+        "reason": "CRM update failed"
+    }
+]
