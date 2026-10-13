@@ -8,8 +8,6 @@ lead = {
     "requirement": "Need customer lead automation",
     "urgency": "high"
 }
-with open("fields.json", "w") as file:
-    json.dump(lead, file, indent=4)
 
 def validate_lead(lead):
     if lead["name"]=="":
@@ -25,7 +23,6 @@ def validate_lead(lead):
     if lead["urgency"] not in ["high", "low", "medium"]:
         return False
     return True
-result=validate_lead(lead)
 
 
 prompt=f'''
@@ -98,7 +95,6 @@ invalid_response = {
     "reason": "",
     "recommended_action": ""
 }
-final=validate_ai_response(response=invalid_response)
 
 
 def determine_action(ai_result):
@@ -125,9 +121,7 @@ low_confidence_result = {
     "priority": "high",
     "confidence": 65
 }
-outcome=determine_action(ai_result_1)
-outcome2=determine_action(medium_result)
-outcome3=determine_action(low_confidence_result)
+
 
 
 
@@ -147,7 +141,6 @@ def process_lead(lead, ai_result):
     "action": action
     }
     return final
-result=process_lead(lead, invalid_response)
 
 def send_to_crm(lead, max_retries=3):
     attempt=0
@@ -161,7 +154,7 @@ def send_to_crm(lead, max_retries=3):
 
     print("CRM failed after all retries")
     return False
-result=send_to_crm(lead, max_retries=2)
+
 
 def save_failed_lead(lead, filename="failed_leads.json"):
     try:
@@ -182,11 +175,7 @@ def save_failed_lead(lead, filename="failed_leads.json"):
             return True
     except (OSError, TypeError, ValueError) as e:
             return False
-result=save_failed_lead(lead)
-print(result)
 
-result=save_failed_lead(lead)
-print(result)
 
 def run_automation(lead, ai_result):
     if not validate_lead(lead):
@@ -218,8 +207,17 @@ def run_automation(lead, ai_result):
             "crm_status": "failed",
             }
         return failed
-result = run_automation(lead, valid_response)
-print(result)
+
+
+if __name__ == "__main__":
+    with open("fields.json", "w") as file:
+        json.dump(lead, file, indent=4)
+
+    print("Lead valid:", validate_lead(lead))
+    print("AI response valid:", validate_ai_response(valid_response))
+
+    result = run_automation(lead, valid_response)
+    print(result)
 
     
 

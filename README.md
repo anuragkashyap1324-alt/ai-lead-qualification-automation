@@ -34,6 +34,29 @@ Businesses can waste time manually reviewing customer leads and deciding which p
    python main.py
    ```
 
+## Automated Tests
+
+The project includes automated tests using Python's built-in
+`unittest` framework.
+
+Current test coverage includes:
+- Acceptance of valid lead data
+- Rejection of leads with an empty name
+- Rejection of zero budgets
+- Rejection of unsupported urgency values
+- Rejection of invalid AI priority values
+
+Run the tests with:
+
+```bash
+python -m unittest -v test_main
+```
+
+All five tests currently pass.
+
+Note: AI responses and CRM behavior remain simulated.
+
+
 ## Current Limitations
 This is a learning and portfolio demonstration. AI responses and CRM behavior are simulated; a live AI API, production CRM integration, and deployed webhook are not included in this version.
 
